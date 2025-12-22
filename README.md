@@ -1,0 +1,12 @@
+<p align="center">
+  <img width="300" height="250" src="https://github.com/user-attachments/assets/c966d617-0e32-40f6-a233-dde584cb2ffd" alt="Me (irl)" />
+</p>
+<p align="center">Hai! Here's where i practice programming, <br/> my weird solutions are open to y'all! (˶ᵔ ᵕ ᵔ˶) ‹𝟹</p>
+<p align="center">
+  <a href="https://github.com/chwrryroll/beepboop/tree/main/code/gleam">Gleam</a> •
+  <a href="https://github.com/chwrryroll/beepboop/tree/main/code/rust">Rust (Maybe later)</a>
+</p>
+
+# 🍰 | Advent of What?
+[Advent of Code](https://adventofcode.com/) is an Advent calendar of small programming puzzles for a variety of skill levels that can be solved in any programming language you like.
+People use them as interview prep, company training, university coursework, practice problems, a speed contest, or to challenge each other.
