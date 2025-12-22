@@ -1,0 +1,9 @@
+# Burn ALL generated files!!!
+code/gleam/build
+code/gleam/manifest.toml
+
+code/rust/target
+code/rust/Cargo.lock
+
+code/typescript/node_modules
+code/typescript/bun.lock
