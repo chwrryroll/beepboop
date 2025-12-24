@@ -77,7 +77,11 @@ pub fn is_repeating(num: Int) -> Bool {
   try(graphemes, 0, limit - 1)
 }
 
-fn try(graphemes: List(UtfCodepoint), slice: Int, limit: Int) -> Bool {
+fn try(
+  graphemes : List(UtfCodepoint),
+  slice     : Int,
+  limit     : Int
+) -> Bool {
   let assert Ok(first) = list.first(graphemes)
   let assert Ok(rest)  = list.rest(graphemes)
 
