@@ -2,6 +2,7 @@ import gleam/list
 import gleam/int
 import gleam/string
 
+pub type Move = #(Rotation, Int)
 pub type Rotation {
   Left Right
 }
@@ -9,7 +10,22 @@ pub type Dial {
   Dial(position: Int)
 }
 
-pub fn pt_1(moves: List(#(Rotation, Int))) -> Int {
+pub fn parse(input: String) -> List(Move) {
+  input
+  |> string.trim
+  |> string.split("\n")
+  |> list.map(fn(line) {
+    let #(rotation, power) = case line {
+      "L" <> p -> #(Left,  p)
+      "R" <> p -> #(Right, p)
+      _ -> panic as "Invalid move!"
+    }
+    let assert Ok(power) = int.parse(power)
+    #(rotation, power)
+  })
+}
+
+pub fn pt_1(moves: List(Move)) -> Int {
   Dial(50)
   |> decrypt(moves, fn(dial, move) {
     let #(rotation, power) = move
@@ -20,7 +36,7 @@ pub fn pt_1(moves: List(#(Rotation, Int))) -> Int {
   })
 }
 
-pub fn pt_2(moves: List(#(Rotation, Int))) -> Int {
+pub fn pt_2(moves: List(Move)) -> Int {
   Dial(50)
   |> decrypt(moves, fn(dial, move) {
     let #(rotation, power) = move
@@ -62,21 +78,6 @@ pub fn pt_2(moves: List(#(Rotation, Int))) -> Int {
   })
 }
 
-pub fn parse(input: String) -> List(#(Rotation, Int)) {
-  let moves = input
-  |> string.trim
-  |> string.split("\n")
-  list.map(moves, fn(line) {
-    let #(rotation, power) = case line {
-      "L" <> p -> #(Left,  p)
-      "R" <> p -> #(Right, p)
-      _ -> panic as "Invalid move!"
-    }
-    let assert Ok(power) = int.parse(power)
-    #(rotation, power)
-  })
-}
-
 fn rotate(
   dial     : Dial,
   rotation : Rotation,
@@ -96,8 +97,8 @@ fn rotate(
 
 fn decrypt(
   dial: Dial,
-  moves: List(#(Rotation, Int)),
-  method: fn(Dial, #(Rotation, Int)) -> Int
+  moves: List(Move),
+  method: fn(Dial, Move) -> Int
 )
 -> Int {
   decode(dial, moves, method, [])
@@ -106,8 +107,8 @@ fn decrypt(
 
 fn decode(
   dial   : Dial,
-  moves  : List(#(Rotation, Int)),
-  method : fn(Dial, #(Rotation, Int)) -> Int,
+  moves  : List(Move),
+  method : fn(Dial, Move) -> Int,
   list   : List(Int)
 )
 -> List(Int) {
