@@ -48,7 +48,7 @@ fn turn_on(bank: Bank) -> Joltage {
     Error(_), Ok(right) -> int.add(center * 10, right)
     Ok(left), Ok(right) -> int.max(
       int.add(center * 10, right),
-      int.add(left   * 10, right)
+      int.add(left   * 10, center)
     )
   }
 }
